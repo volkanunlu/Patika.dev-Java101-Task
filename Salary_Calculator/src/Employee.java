@@ -1,5 +1,20 @@
 public class Employee {
 
+//    Java'da "Employee" adında fabrika çalışanlarını temsil eden ve metotları ile çalışanların maaşlarını hesaplayan bir sınıf yazmalısınız.
+//    Bu sınıf 4 nitelik ve 5 metoda sahip olacaktır.
+//
+//    Sınıfın Nitelikleri
+//
+//    name : Çalışanın adı ve soyadı
+//    salary : Çalışanın maaşı
+//    workHours : Haftalık çalışma saati
+//    hireYear : İşe başlangıç yılı
+//    Sınıfın Metotları
+//
+//    Employee(name,salary,workHours,hireYear) : Kurucu metot olup 4 parametre alacaktır.
+
+
+
     String name;
     int salary;
     int workHours;
@@ -28,56 +43,60 @@ public class Employee {
     Çalışanın maaşı 1000 TL'den fazla ise maaşının %3'ü kadar vergi uygulanacaktır.*/
 
 
-       public void tax() //Maaşa uygulanan vergi hesaplanacaktır.
+       double tax() //Maaşa uygulanan vergi hesaplanacaktır.
         {
             if (this.salary < 1000)
             {
                 double vergi=0;
                 this.tax+=vergi;
-                System.out.println("Vergiden muaf bir  maaştır." + this.tax );
+                return this.tax;
             } else
             {
                 double vergi = (this.salary *0.03) ;
                 this.tax+=vergi;
-                System.out.println("Vergi tutarı :" + vergi + "TL" + "Vergi sonrası maaş:" + this.tax + " TL");
+                return this.tax;
             }
         }
 /*
     bonus() : Eğer çalışan haftada 40 saatten fazla çalışmış ise fazladan çalıştığı her saat başına 30 TL olacak şekilde bonus ücretleri hesaplayacaktır.
 */
-      public void bonus()
+      int bonus()
         {
             if (this.workHours>40)
             {
-                int tutar=(this.workHours)*30;
-                this.bonus+=tutar;
-                System.out.println("Bonus maaş tutarınız:" +this.bonus+ " TL");
 
+                int tutar=(this.workHours-40)*30;
+                this.bonus+=tutar;
+                return this.bonus;
             }
             else
             {
-                System.out.println("Herhangi bir bonus ücret saptanmadı..");
+                return this.bonus;
             }
         }
-       public void raiseSalary()
+       double raiseSalary()
         {
-            int year=2021;
-            if(year-this.hireYear<10)
+
+            if(2021-this.hireYear<10)
             {
                 this.raise=(this.salary)*(0.05);
-                System.out.println("Zamlı maaşınız : "+ this.raise);
+                return this.raise;
             }
 
-            else if (year-this.hireYear>=9 || year-this.workHours<=20)
+            else if (2021-this.hireYear>=9 && 2021-this.workHours<=20)
             {
                 this.raise=(this.salary)*(0.10);
-                System.out.println("Zamlı maaşınız : "+ this.raise);
-
+                return this.raise;
             }
-            else if (year-this.hireYear>19)
+            else if (2021-this.hireYear>20)
             {
                 this.raise+=(this.salary)*(0.15);
-                System.out.println("Zamlı maaşınız : "+ this.raise);
+                return this.raise;
+            }
+            else
+            {
+                System.out.println("Belirlenemeyen bir aralık.");
+                return this.raise;
             }
 
 
@@ -97,9 +116,8 @@ public class Employee {
         System.out.println("Bonus : " +this.bonus );
         System.out.println("Maaş artışı :" +this.raise);
         System.out.println("Vergi ve Bonuslar ile birlikte maaş :" +(this.salary-this.tax+this.bonus));
-        System.out.println("Toplam Maaş : " + this.tax);
-
+        System.out.println("Toplam Maaş : " +(this.salary-this.tax+this.bonus+this.raise));
     }
 
     }
-    
+
