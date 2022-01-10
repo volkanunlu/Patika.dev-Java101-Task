@@ -1,2 +1,2 @@
 # Patika.dev-odevleri
-Patika.dev_Odevleri-Patika.dev_task
+## Bu repository içerisinde patika.dev ödevleri bulunmaktadır.
